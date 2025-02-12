@@ -1,11 +1,12 @@
-import { HeroUIProvider } from "@heroui/react";
-import { ThemeProvider } from "next-themes";
+import dynamic from 'next/dynamic'
+
+const ThemeProvider = dynamic(()=> import('next-themes').then((mod) => mod.ThemeProvider))
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-        <HeroUIProvider>{children}</HeroUIProvider>
+      <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+        {children}
       </ThemeProvider>
     </>
   );

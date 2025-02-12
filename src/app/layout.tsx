@@ -1,17 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import fonts from '../lib/files/fonts'
+import NavbarShared from "@/components/shared/NavbarShared";
 
 export const metadata: Metadata = {
   title: "💫 | Anshu's JEE prep space",
@@ -24,11 +15,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <div className="w-full h-full">
+    <html lang="en" suppressHydrationWarning >
+      <body className={`antialiased`}>
+        <div className={`${fonts.atkinson.className} font-medium  `}>
+          <NavbarShared />
           <Providers>{children}</Providers>
         </div>
       </body>
