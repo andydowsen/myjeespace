@@ -10,6 +10,7 @@ import {
   SignInButton,
 } from "@clerk/nextjs";
 import ThemeChanger from "@/components/shared/ThemeChanger";
+import { LoginForm } from "@/components/shared/loginForm";
 
 export const metadata: Metadata = {
   title: "💫 | Anshu's JEE prep space",
@@ -22,13 +23,7 @@ const SigninPageComponent = () => {
       <div
         className={`${fonts.openSans.className} w-full h-screen flex flex-col text-center  items-center justify-center`}
       >
-        <h1 className="text-2xl font-bold">Sign in to continue</h1>
-        <span className="mt-4">
-          <SignInButton mode="modal" />
-        </span>
-        <strong className="text-sm my-4 italic">
-          I know it's a basic page, but go with it for now. 😷
-        </strong>
+        <LoginForm />
       </div>
     </>
   );

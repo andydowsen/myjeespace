@@ -8,6 +8,8 @@ import {
   NavbarMenuItem,
   NavbarContent,
   NavbarItem,
+  Button,
+  Spinner,
 } from "@heroui/react";
 import fonts from "@/lib/files/fonts";
 import Link from "next/link";
@@ -62,30 +64,49 @@ export const SunIcon = (props: React.SVGProps<SVGSVGElement>) => {
 };
 
 const LoginUser = () => {
+  const { isLoaded } = useUser();
   return (
     <>
       <div
-        className=" dark:shadow-lg
-          dark:border-slate-900/60
-            flex flex-row px- rounded-full border-1 p-1  border-gray-300 cursor-pointer"
+        className=" 
+        border-gray-300/70  shadow-sm
+          dark:shadow-lg
+          dark:border-gray-700/60
+          
+
+            flex flex-row items-center px-1 gap-2  rounded-full border-1 p-1  border-gray-300 cursor-pointer"
       >
-        <UserButton
-          component="div"
-          appearance={{
-            elements: {
-              avatarBox: {
-                width: 40,
-                height: 40,
-              },
-              userButtonBox: {
-                padding: 0,
-              },
-              userButtonContent: {
-                padding: 0,
-              },
-            },
-          }}
-        />
+        {isLoaded ? (
+          <>
+            <Link href="/student/dashboard">
+              <Button
+                size="md"
+                className="text-xs rounded-full px-4  bg-gradient-to-r from-violet-800 via-purple-600 to-rose-400 text-white py-4"
+              >
+                Dashboard
+              </Button>
+            </Link>
+            <UserButton
+              component="div"
+              appearance={{
+                elements: {
+                  avatarBox: {
+                    width: 40,
+                    height: 40,
+                  },
+                  userButtonBox: {
+                    padding: 0,
+                  },
+                  userButtonContent: {
+                    padding: 0,
+                  },
+                },
+              }}
+            />
+          </>
+        ) : (
+          <Spinner size="sm" />
+        )}
       </div>
     </>
   );
