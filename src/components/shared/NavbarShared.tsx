@@ -11,8 +11,17 @@ import {
 } from "@heroui/react";
 import fonts from "@/lib/files/fonts";
 import Link from "next/link";
-import { LuClock1, LuHouse, LuPaperclip } from "react-icons/lu";
+import { LuClock1, LuHouse, LuMenu, LuPaperclip } from "react-icons/lu";
 import { UserButton, UserProfile, useUser } from "@clerk/nextjs";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { useTheme } from "next-themes";
 
 export const MoonIcon = (props: React.SVGProps<SVGSVGElement>) => {
   return (
@@ -55,9 +64,13 @@ export const SunIcon = (props: React.SVGProps<SVGSVGElement>) => {
 const LoginUser = () => {
   return (
     <>
-      <div className=" flex flex-row px- rounded-full border-1 p-1  border-gray-300 cursor-pointer">
+      <div
+        className=" dark:shadow-lg
+          dark:border-slate-900/60
+            flex flex-row px- rounded-full border-1 p-1  border-gray-300 cursor-pointer"
+      >
         <UserButton
-        component="div"
+          component="div"
           appearance={{
             elements: {
               avatarBox: {
@@ -88,6 +101,64 @@ export const AcmeLogo = () => {
         fillRule="evenodd"
       />
     </svg>
+  );
+};
+
+const ResponsiveHamburgerMenu = () => {
+  const navigationLinks = [
+    {
+      key: 1,
+      name: "Home",
+      href: "/",
+      icon: <LuHouse />,
+    },
+    {
+      key: 2,
+      name: "Your timers",
+      href: "/preparation-bucket/timers",
+      icon: <LuClock1 />,
+    },
+    {
+      key: 3,
+
+      name: "Test analysis",
+      href: "/preparation-bucket/test-analysis",
+      icon: <LuPaperclip />,
+    },
+    {
+      key: 4,
+      name: "Got exhausted 😩.?",
+      href: "/preparation-bucket/got-exhausted",
+      icon: "",
+    },
+  ];
+  return (
+    <>
+      <Sheet>
+        <SheetTrigger>
+          <LuMenu className="text-2xl" />{" "}
+        </SheetTrigger>
+        <SheetContent>
+          <SheetHeader>
+            <SheetTitle>ANIVO</SheetTitle>
+            {navigationLinks.map((items) => {
+              return (
+                <div key={items.key}>
+                  <NavbarItem className=" text-xl gap-y-4 font-semibold">
+                    <Link
+                      className="flex flex-row gap-2 text-center items-center justifyt-center"
+                      href={items.href}
+                    >
+                      {items.name} <span>{items.icon}</span>
+                    </Link>
+                  </NavbarItem>
+                </div>
+              );
+            })}
+          </SheetHeader>
+        </SheetContent>
+      </Sheet>
+    </>
   );
 };
 
@@ -122,25 +193,24 @@ const NavbarShared = () => {
   return (
     <>
       <Navbar
-        className={`absolute top-4 left-0 w-[70%] rounded-full border-gray-200/70  border-1  m-auto ${fonts.inter.className} text-sm`}
+        className={`absolute top-4 left-0 w-[70%] rounded-full border-gray-300/70  shadow-sm
+          dark:shadow-lg
+          dark:border-gray-700/60
+          
+          border-1  m-auto ${fonts.inter.className} text-sm`}
       >
-        <NavbarContent className="sm:hidden" justify="start">
-          <NavbarMenuToggle />
-        </NavbarContent>
-
-        <NavbarContent className="sm:hidden pr-3" justify="center">
+        <NavbarContent className="" justify="start">
+          <div className="xl:hidden">
+            <ResponsiveHamburgerMenu />
+          </div>
           <NavbarBrand>
             <AcmeLogo />
             <p className="font-bold text-inherit">ANIVO</p>
           </NavbarBrand>
         </NavbarContent>
 
-        <NavbarBrand>
-          <AcmeLogo />
-          <p className="font-bold text-inherit">ANIVO</p>
-        </NavbarBrand>
         <NavbarContent
-          className="hidden sm:flex gap-4 m-auto text-center items-center justify-center"
+          className="hidden  xl:flex gap-4 m-auto text-center items-center justify-center"
           justify="center"
         >
           {navigationLinks.map((items) => {

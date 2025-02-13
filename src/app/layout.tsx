@@ -9,6 +9,7 @@ import {
   SignedOut,
   SignInButton,
 } from "@clerk/nextjs";
+import ThemeChanger from "@/components/shared/ThemeChanger";
 
 export const metadata: Metadata = {
   title: "💫 | Anshu's JEE prep space",
@@ -41,13 +42,14 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
-        <body className={`antialiased`}>
+        <body className={`antialiased`} suppressHydrationWarning>
           <SignedOut>
             <SigninPageComponent />
           </SignedOut>
           <SignedIn>
             <div className={`${fonts.atkinson.className} font-medium  `}>
               <NavbarShared />
+              <ThemeChanger />
               <Providers>{children}</Providers>
             </div>
           </SignedIn>
