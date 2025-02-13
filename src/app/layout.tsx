@@ -15,6 +15,24 @@ export const metadata: Metadata = {
   description: "For anshu naagar, and his friends and colleagues.",
 };
 
+const SigninPageComponent = () => {
+  return (
+    <>
+      <div
+        className={`${fonts.openSans.className} w-full h-screen flex flex-col text-center  items-center justify-center`}
+      >
+        <h1 className="text-2xl font-bold">Sign in to continue</h1>
+        <span className="mt-4">
+          <SignInButton mode="modal" />
+        </span>
+        <strong className="text-sm my-4 italic">
+          I know it's a basic page, but go with it for now. 😷
+        </strong>
+      </div>
+    </>
+  );
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -25,7 +43,7 @@ export default function RootLayout({
       <html lang="en" suppressHydrationWarning>
         <body className={`antialiased`}>
           <SignedOut>
-            <SignInButton />
+            <SigninPageComponent />
           </SignedOut>
           <SignedIn>
             <div className={`${fonts.atkinson.className} font-medium  `}>

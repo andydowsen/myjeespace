@@ -5,17 +5,14 @@ import {
   Navbar,
   NavbarBrand,
   NavbarMenuToggle,
-  NavbarMenu,
   NavbarMenuItem,
   NavbarContent,
   NavbarItem,
-  Button,
-  Switch,
 } from "@heroui/react";
 import fonts from "@/lib/files/fonts";
 import Link from "next/link";
 import { LuClock1, LuHouse, LuPaperclip } from "react-icons/lu";
-import { useTheme } from "next-themes";
+import { UserButton, UserProfile, useUser } from "@clerk/nextjs";
 
 export const MoonIcon = (props: React.SVGProps<SVGSVGElement>) => {
   return (
@@ -55,9 +52,30 @@ export const SunIcon = (props: React.SVGProps<SVGSVGElement>) => {
   );
 };
 
-const ThemeSwitcher = () => {
-  const { theme, setTheme } = useTheme();
-  return <></>;
+const LoginUser = () => {
+  return (
+    <>
+      <div className=" flex flex-row px- rounded-full border-1 p-1  border-gray-300 cursor-pointer">
+        <UserButton
+        component="div"
+          appearance={{
+            elements: {
+              avatarBox: {
+                width: 40,
+                height: 40,
+              },
+              userButtonBox: {
+                padding: 0,
+              },
+              userButtonContent: {
+                padding: 0,
+              },
+            },
+          }}
+        />
+      </div>
+    </>
+  );
 };
 
 export const AcmeLogo = () => {
@@ -127,8 +145,8 @@ const NavbarShared = () => {
         >
           {navigationLinks.map((items) => {
             return (
-              <>
-                <NavbarItem className=" text-sm font-semibold" key={items.key}>
+              <div key={items.key}>
+                <NavbarItem className=" text-sm font-semibold">
                   <Link
                     className="flex flex-row gap-2 text-center items-center justifyt-center"
                     href={items.href}
@@ -136,12 +154,12 @@ const NavbarShared = () => {
                     {items.name} <span>{items.icon}</span>
                   </Link>
                 </NavbarItem>
-              </>
+              </div>
             );
           })}
         </NavbarContent>
         <NavbarContent justify="end">
-          <ThemeSwitcher />
+          <LoginUser />
         </NavbarContent>
       </Navbar>
     </>
