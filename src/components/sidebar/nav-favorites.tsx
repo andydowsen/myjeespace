@@ -25,22 +25,22 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar"
 
-export function NavFavorites({
-  favorites,
+export function NavChemistry({
+  chemistry,
 }: {
-  favorites: {
+  chemistry: {
     name: string
     url: string
-    emoji: string
+    emoji: React.ComponentProps<typeof SidebarMenuButton>["children"]
   }[]
 }) {
   const { isMobile } = useSidebar()
 
   return (
     <SidebarGroup className="group-data-[collapsible=icon]:hidden">
-      <SidebarGroupLabel>Favorites</SidebarGroupLabel>
+      <SidebarGroupLabel>Chemistry</SidebarGroupLabel>
       <SidebarMenu>
-        {favorites.map((item) => (
+        {chemistry.map((item) => (
           <SidebarMenuItem key={item.name}>
             <SidebarMenuButton asChild>
               <a href={item.url} title={item.name}>

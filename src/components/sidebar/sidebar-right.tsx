@@ -1,9 +1,10 @@
-import * as React from "react"
-import { Plus } from "lucide-react"
+"use client";
 
-import { Calendars } from "@/components/sidebar/calendars"
-import { DatePicker } from "@/components/sidebar/date-picker"
-import { NavUser } from "@/components/sidebar/nav-user"
+import * as React from "react";
+import { Plus } from "lucide-react";
+import { Calendars } from "@/components/sidebar/calendars";
+import { DatePicker } from "@/components/sidebar/date-picker";
+import { NavUser } from "@/components/sidebar/nav-user";
 import {
   Sidebar,
   SidebarContent,
@@ -14,34 +15,34 @@ import {
   SidebarMenuItem,
   SidebarRail,
   SidebarSeparator,
-} from "@/components/ui/sidebar"
-
-// This is sample data.
-const data = {
-  user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
-  },
-  calendars: [
-    {
-      name: "My Calendars",
-      items: ["Personal", "Work", "Family"],
-    },
-    {
-      name: "Favorites",
-      items: ["Holidays", "Birthdays"],
-    },
-    {
-      name: "Other",
-      items: ["Travel", "Reminders", "Deadlines"],
-    },
-  ],
-}
+} from "@/components/ui/sidebar";
+import { useUser } from "@clerk/nextjs";
 
 export function SidebarRight({
   ...props
 }: React.ComponentProps<typeof Sidebar>) {
+  const { user } = useUser();
+  const data = {
+    user: {
+      name: user?.firstName?.toString(),
+      email: user?.emailAddresses[0].emailAddress.toString(),
+      avatar: user?.imageUrl.toString(),
+    },
+    calendars: [
+      {
+        name: "My Calendars",
+        items: ["Personal", "Work", "Family"],
+      },
+      {
+        name: "Favorites",
+        items: ["Holidays", "Birthdays"],
+      },
+      {
+        name: "Other",
+        items: ["Travel", "Reminders", "Deadlines"],
+      },
+    ],
+  };
   return (
     <Sidebar
       collapsible="none"
@@ -49,7 +50,7 @@ export function SidebarRight({
       {...props}
     >
       <SidebarHeader className="h-16 border-b border-sidebar-border">
-        <NavUser user={data.user} />
+        {data.user && <NavUser user={data.user} />}
       </SidebarHeader>
       <SidebarContent>
         <DatePicker />
@@ -67,5 +68,5 @@ export function SidebarRight({
         </SidebarMenu>
       </SidebarFooter>
     </Sidebar>
-  )
+  );
 }

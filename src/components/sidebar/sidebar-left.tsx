@@ -15,7 +15,7 @@ import {
   Trash2,
 } from "lucide-react";
 
-import { NavFavorites } from "@/components/sidebar/nav-favorites";
+import { NavChemistry } from "@/components/sidebar/nav-favorites";
 import { NavMain } from "@/components/sidebar/nav-main";
 import { NavSecondary } from "@/components/sidebar/nav-secondary";
 import { NavWorkspaces } from "@/components/sidebar/nav-workspaces";
@@ -26,12 +26,12 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar";
+import { LuAtom, LuNotebook, LuPillBottle } from "react-icons/lu";
 
-// This is sample data.
 const data = {
   teams: [
     {
-      name: "Acme Inc",
+      name: "Anivo",
       logo: Command,
       plan: "Enterprise",
     },
@@ -97,62 +97,23 @@ const data = {
       icon: MessageCircleQuestion,
     },
   ],
-  favorites: [
+  chemistry: [
     {
-      name: "Project Management & Task Tracking",
+      name: "Structure of atom",
       url: "#",
-      emoji: "📊",
+      emoji: <LuAtom />,
     },
     {
-      name: "Family Recipe Collection & Meal Planning",
+      name: "Some basics of chemistry",
       url: "#",
-      emoji: "🍳",
+      emoji: <LuPillBottle />,
     },
-    {
-      name: "Fitness Tracker & Workout Routines",
-      url: "#",
-      emoji: "💪",
-    },
-    {
-      name: "Book Notes & Reading List",
-      url: "#",
-      emoji: "📚",
-    },
-    {
-      name: "Sustainable Gardening Tips & Plant Care",
-      url: "#",
-      emoji: "🌱",
-    },
-    {
-      name: "Language Learning Progress & Resources",
-      url: "#",
-      emoji: "🗣️",
-    },
-    {
-      name: "Home Renovation Ideas & Budget Tracker",
-      url: "#",
-      emoji: "🏠",
-    },
-    {
-      name: "Personal Finance & Investment Portfolio",
-      url: "#",
-      emoji: "💰",
-    },
-    {
-      name: "Movie & TV Show Watchlist with Reviews",
-      url: "#",
-      emoji: "🎬",
-    },
-    {
-      name: "Daily Habit Tracker & Goal Setting",
-      url: "#",
-      emoji: "✅",
-    },
+    
   ],
   workspaces: [
     {
-      name: "Personal Life Management",
-      emoji: "🏠",
+      name: "Mock tests",
+      emoji: <LuNotebook />,
       pages: [
         {
           name: "Daily Journal & Reflection",
@@ -268,7 +229,7 @@ export function SidebarLeft({
         <NavMain items={data.navMain} />
       </SidebarHeader>
       <SidebarContent>
-        <NavFavorites favorites={data.favorites} />
+        <NavChemistry chemistry={data.chemistry} />
         <NavWorkspaces workspaces={data.workspaces} />
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>

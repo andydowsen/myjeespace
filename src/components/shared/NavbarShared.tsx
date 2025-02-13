@@ -217,7 +217,7 @@ const NavbarShared = () => {
         className={`absolute top-4 left-0 w-[70%] rounded-full border-gray-300/70  shadow-sm
           dark:shadow-lg
           dark:border-gray-700/60
-          
+          navbar-shwocasing
           border-1  m-auto ${fonts.inter.className} text-sm`}
       >
         <NavbarContent className="" justify="start">
