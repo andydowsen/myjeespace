@@ -2,11 +2,12 @@
 
 import {
   ArrowUpRight,
-  Link,
   MoreHorizontal,
   StarOff,
   Trash2,
 } from "lucide-react"
+
+import Link from 'next/link'
 
 import {
   DropdownMenu,
@@ -24,6 +25,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
+import { LuLink } from "react-icons/lu"
 
 export function NavChemistry({
   chemistry,
@@ -43,10 +45,10 @@ export function NavChemistry({
         {chemistry.map((item) => (
           <SidebarMenuItem key={item.name}>
             <SidebarMenuButton asChild>
-              <a href={item.url} title={item.name}>
+              <Link href={item.url} >
                 <span>{item.emoji}</span>
                 <span>{item.name}</span>
-              </a>
+              </Link>
             </SidebarMenuButton>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -66,7 +68,7 @@ export function NavChemistry({
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
-                  <Link className="text-muted-foreground" />
+                  <LuLink className="text-muted-foreground" />
                   <span>Copy Link</span>
                 </DropdownMenuItem>
                 <DropdownMenuItem>

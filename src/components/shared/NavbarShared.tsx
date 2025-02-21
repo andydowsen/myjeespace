@@ -69,12 +69,10 @@ const LoginUser = () => {
     <>
       <div
         className=" 
-        border-gray-300/70  shadow-sm
+          shadow-sm
           dark:shadow-lg
-          dark:border-gray-700/60
           
-
-            flex flex-row items-center px-1 gap-2  rounded-full border-1 p-1  border-gray-300 cursor-pointer"
+            flex flex-row items-center px-1 gap-2  rounded-full border-1 p-1   dark:border-gray-700/60 cursor-pointer"
       >
         {isLoaded ? (
           <>
@@ -206,7 +204,7 @@ const NavbarShared = () => {
     },
     {
       key: 4,
-      name: "Got exhausted 😩.?",
+      name: "Got exhausted .?",
       href: "/preparation-bucket/got-exhausted",
       icon: "",
     },
@@ -214,9 +212,10 @@ const NavbarShared = () => {
   return (
     <>
       <Navbar
-        className={`absolute top-4 left-0 w-[70%] rounded-full border-gray-300/70  shadow-sm
+      
+        className={`absolute top-4 left-0 w-[70%] rounded-full dark:border-gray-700/60
+          shadow-sm
           dark:shadow-lg
-          dark:border-gray-700/60
           navbar-shwocasing
           border-1  m-auto ${fonts.inter.className} text-sm`}
       >

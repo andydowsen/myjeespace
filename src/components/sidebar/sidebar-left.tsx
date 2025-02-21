@@ -26,7 +26,7 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar";
-import { LuAtom, LuNotebook, LuPillBottle } from "react-icons/lu";
+import { LuAtom, LuBadgePoundSterling, LuGlassWater, LuNotebook, LuPillBottle } from "react-icons/lu";
 
 const data = {
   teams: [
@@ -100,13 +100,28 @@ const data = {
   chemistry: [
     {
       name: "Structure of atom",
-      url: "#",
+      url: "/student/questionbattleground/structure-of-atom",
       emoji: <LuAtom />,
     },
     {
       name: "Some basics of chemistry",
       url: "#",
       emoji: <LuPillBottle />,
+    },
+    {
+      name: "Classification of elements and periodicity",
+      url:"#",
+      emoji: <LuGlassWater />
+    },
+    {
+      name: "Chemical bonding and molecular structure",
+      url:"/student/questionbattleground/chemical-bonding-and-molecular-structure",
+      emoji: <LuBadgePoundSterling />
+    },
+    {
+      name: "States of matter",
+      url: "#", 
+      emoji: <LuNotebook />
     },
     
   ],

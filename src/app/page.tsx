@@ -13,9 +13,6 @@ const Home = () => {
   if (!isClient) return null;
   return (
     <div className="flex flex-col items-center relative justify-center h-screen">
-      <div className="opacity-60 blur-sm w-full h-full ">
-        <RainingLetters />
-      </div>
       <label className="switch">
         <input
           type="checkbox"
