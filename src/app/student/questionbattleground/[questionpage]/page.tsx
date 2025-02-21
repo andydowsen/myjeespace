@@ -4,7 +4,9 @@ import { Card } from "@/components/ui/card";
 import { LuGitGraph } from "react-icons/lu";
 import React from "react";
 
-const Page = async ({ params }: React.PropsWithChildren<{ params: { questionpage: string } }>) => {
+const Page = async ({
+  params,
+}: React.PropsWithChildren<{ params: { questionpage: string } }>) => {
   const { questionpage } = await params;
   console.log(questionpage);
 
@@ -12,9 +14,9 @@ const Page = async ({ params }: React.PropsWithChildren<{ params: { questionpage
     chapterSlug: "structure-of-atom",
     chapterTitle: "Structure of Atom",
     chapterInsightBadges: {
-      difficulty: "Difficult", 
-      weightage: "Medium weightage", 
-      lengthOfChapter: "Time demanding", 
+      difficulty: "Difficult",
+      weightage: "Medium weightage",
+      lengthOfChapter: "Time demanding",
     },
     questionsYearWise: [
       {
@@ -53,11 +55,19 @@ const Page = async ({ params }: React.PropsWithChildren<{ params: { questionpage
       <main className="px-4 md:px-6 lg:px-8">
         <section className="flex flex-col lg:flex-row justify-between items-center relative mt-4">
           <div className="mb-4 lg:mb-0">
-            <h1 className="text-4xl font-bold">{apiCheckObject.chapterTitle}</h1>
+            <h1 className="text-4xl font-bold">
+              {apiCheckObject.chapterTitle}
+            </h1>
             <div className="mt-2 gap-2 flex flex-wrap">
-              <Badge variant="destructive">{apiCheckObject.chapterInsightBadges.difficulty}</Badge>
-              <Badge variant="secondary">{apiCheckObject.chapterInsightBadges.weightage}</Badge>
-              <Badge variant="outline">{apiCheckObject.chapterInsightBadges.lengthOfChapter}</Badge>
+              <Badge variant="destructive">
+                {apiCheckObject.chapterInsightBadges.difficulty}
+              </Badge>
+              <Badge variant="secondary">
+                {apiCheckObject.chapterInsightBadges.weightage}
+              </Badge>
+              <Badge variant="outline">
+                {apiCheckObject.chapterInsightBadges.lengthOfChapter}
+              </Badge>
             </div>
           </div>
           <Button className="font-medium mt-4 lg:mt-0" size="sm">
@@ -83,7 +93,10 @@ const Page = async ({ params }: React.PropsWithChildren<{ params: { questionpage
                           <p className="text-lg">{item.questionDescription}</p>
                           <div className="mt-2">
                             {item.options.map((optionItem, optionIndex) => (
-                              <Card key={optionIndex} className="flex flex-row flex-2   gap-4 mb-2 p-4 border rounded-lg">
+                              <Card
+                                key={optionIndex}
+                                className="flex flex-row flex-2   gap-4 mb-2 p-4 border rounded-lg"
+                              >
                                 <button className="flex-1">{`A: ${optionItem.optionA}`}</button>
                                 <button className="flex-1">{`B: ${optionItem.optionB}`}</button>
                                 <button className="flex-1">{`C: ${optionItem.optionC}`}</button>
@@ -94,13 +107,14 @@ const Page = async ({ params }: React.PropsWithChildren<{ params: { questionpage
                         </div>
 
                         <div className="col-span-1 sm:col-span-2 lg:col-span-2">
-                          {item.attachableImages && item.attachableImages.toString() && (
-                            <img
-                              className="rounded-xl w-full h-auto"
-                              src={item.attachableImages.toString()}
-                              alt="Question related image"
-                            />
-                          )}
+                          {item.attachableImages &&
+                            item.attachableImages.toString() && (
+                              <img
+                                className="rounded-xl w-full h-auto"
+                                src={item.attachableImages.toString()}
+                                alt="Question related image"
+                              />
+                            )}
                         </div>
 
                         <div className="col-span-1 lg:col-span-1">
